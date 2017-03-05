@@ -23,6 +23,7 @@ import {
 } from 'spectacle'
 
 import BuggyCounterCode from './BuggyCounterCode'
+import BuggyCounterCode2 from './BuggyCounterCode2'
 import BuggyCodeString from './BuggyCounterCodeString'
 import CounterCode from './CounterCode'
 import JSProfileExample from './JSProfileExample'
@@ -155,21 +156,50 @@ export default class Presentation extends Component {
             
             <Slide>
               <Heading size={3}>Timeline Network</Heading>              
-              <Text>Click "Network" tag and you can see the network responses sent to and from your application</Text>              
+              <Text>Click "Network" tab and you can see the network responses sent to and from your application</Text>              
               <GetRandomUser />
+            </Slide>
+            
+            <Slide>
+              <Heading size={3}>Chrome Sources</Heading>              
+              <Text>Click Sources pane and type command + p (Mac) or control + p (Windows)</Text>              
+              <Text>We are going to explore conditional breakpointing and other cool features of the debugger</Text>
             </Slide>
 
             
             <Slide>
-              <Heading size={2}>Buggy Cookie</Heading>
+              <Heading size={3}>Buggy Cookie Code</Heading>
+              <Text>Press Command P and type "BuggyCounterCode"</Text>
               <BuggyCounterCode />
             </Slide>
+              
             <Slide>
-            <CodePane
-              lang="jsx"
-              source={BuggyCodeString}              
-            />
-å            </Slide>
+              <Heading size={3}>What's the problem with this?</Heading>
+              <Text>In javascript, the context of this can switch depending on where the function or object is called from</Text>              
+              <Text>Unlike java or traditional OOP, functions are objects and inherit the global context when instantiated</Text>
+              <Text>When you click on "addCookie" that function is a living object in the window space, and it's reference is the global window object. This is a "feature" of Jsx code.</Text>
+            </Slide>
+            <Slide>
+              <Text>One way to fis our problem is to bind the context of this to the class it is called in, within the constructor.</Text>
+              <Text>Binding is a feature of javascript that allows you to assign context and even values, freezing a function ie enforcing encapsulation</Text>
+              <CodePane
+                lang="jsx"
+                source={`
+                  constructor(props) {
+                    ...
+                    this.addCookie = this.addCookie.bind(this);
+                    this.addCookie = this.addCookie.bind(this, 3); //would force the value of the argument to be 3 always
+                  }
+                `}              
+              />
+            </Slide>
+              
+            <Slide>
+              <Heading size={3}>Buggy Cookie Code 2</Heading>
+              <Text>Press Command P and type "BuggyCounterCode2." Did we fix it?</Text>              
+              <BuggyCounterCode2 />
+            </Slide>
+
             <Slide>
               <Heading size={2}>Correct Cookie Code</Heading>
               <CounterCode />
