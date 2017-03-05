@@ -8,7 +8,7 @@ import {
   // BlockQuote, 
   // Cite, 
   CodePane, 
-  // Code, 
+  Code, 
   Deck, 
   // Fill, 
   // Fit,
@@ -51,6 +51,11 @@ export function ul(items, delimiter='-') {
     return <List>{li}</List>
 }
 
+export function p(text) {
+    return <Appear><Text>{text}</Text></Appear>
+}
+
+
 export default class Presentation extends Component {
     render() {
         return (
@@ -68,9 +73,16 @@ export default class Presentation extends Component {
               {ul(`-Console Statements
                    -Sources Pane
                    -React Tools
-                   -Redux Tools` )}
-              
+                   -Redux Tools` )}              
             </Slide>
+            
+            <Slide>
+              <Heading size={3}>Chrome Satements</Heading>
+              <CodePane lang="jsx" source='console.assert(false, "this statement is false")' />
+              <Text>This will only log to the console if the statement is false.</Text>
+              {p('It can be slower so you will want to limit it use with the environment')}              
+            </Slide>
+            
             <Slide>
               <Heading size={2}>Buggy Cookie</Heading>
               <BuggyCounterCode />
@@ -78,12 +90,9 @@ export default class Presentation extends Component {
             <Slide>
             <CodePane
               lang="jsx"
-              source={BuggyCodeString}
+              source={BuggyCodeString}              
             />
-            </Slide>
-            <Slide>            
-              <ComponentPlayground code={BuggyCodeString} theme="dark" />
-            </Slide>
+å            </Slide>
             <Slide>
               <Heading size={2}>Correct Cookie Code</Heading>
               <CounterCode />
