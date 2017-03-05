@@ -23,17 +23,17 @@ import {
   // ComponentPlayground
 } from 'spectacle'
 
-import ul from '../Presentation'
+// import ul from '../Presentation'
 import traditional from './traditionalApp.png'
 import react from './reactApp.png'
 
-function s(children) {
-    return (
-    <Slide>
-      {children}
-    </Slide>
-  )
-}
+// function s(children) {
+//     return (
+//     <Slide>
+//       {children}
+//     </Slide>
+//   )
+// }
 
 export class ReactIntro extends Component { 
     render() {

@@ -7,7 +7,7 @@ import {
   // BlockQuote, 
   // Cite, 
   CodePane, 
-  Code, 
+  // Code, 
   Deck, 
   // Fill, 
   // Fit,
@@ -16,16 +16,18 @@ import {
   // Layout, 
   ListItem, 
   List, 
-  Quote, 
+  // Quote, 
   Slide, 
   Text,
-  ComponentPlayground
+  // ComponentPlayground
 } from 'spectacle'
 
 import BuggyCounterCode from './BuggyCounterCode'
 import BuggyCodeString from './BuggyCounterCodeString'
 import CounterCode from './CounterCode'
 import JSProfileExample from './JSProfileExample'
+import GetRandomUser from './GetRandomUser'
+
 import { ReactIntro, HowDiffers, ReactDiffers } from './slides/ReactSlides'
 
 // import CodeSlide from 'spectacle-code-slide'
@@ -154,6 +156,7 @@ export default class Presentation extends Component {
             <Slide>
               <Heading size={3}>Timeline Network</Heading>              
               <Text>Click "Network" tag and you can see the network responses sent to and from your application</Text>              
+              <GetRandomUser />
             </Slide>
 
             

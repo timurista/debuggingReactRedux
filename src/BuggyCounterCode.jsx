@@ -4,19 +4,6 @@ import 'spectacle/lib/themes/default/index.css'
 import React, { Component } from 'react'
 import cookie from './cookie.svg'
 
-// use preloader for images
-// import preloader from 'spectacle/lib/utils/preloader'
-
-// preloader({
-//   
-// })
-
-const code = function() { console.log('error')}
-
-// const theme = createTheme({
-//     primary: 'Montserrat',
-// })
-
 export default class BuggyCounterCode extends Component {
     constructor(props) {
         super(props)
@@ -34,7 +21,7 @@ export default class BuggyCounterCode extends Component {
     renderCookies() {
         const { cookies } = this.state
         const cookieArray = Array(cookies).fill(0).map( i => (
-        <li key="i"><img src={cookie} height="20" width="20"/>Cookie # {i}</li>        
+        <li key="i"><img src={cookie} height="20" width="20" alt="cookie"/>Cookie # {i}</li>        
       ))
         return <ul>{cookieArray}</ul>
     }

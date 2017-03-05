@@ -2,8 +2,7 @@ import 'normalize.css'
 import 'spectacle/lib/themes/default/index.css'
 
 import React, { Component } from 'react'
-import cookie from './cookie.svg'
-import { autobind } from 'core-decorators'
+// import { autobind } from 'core-decorators'
 
 export default class JSProfileExample extends Component {
     constructor(props) {
@@ -41,7 +40,6 @@ export default class JSProfileExample extends Component {
     }
     
     render() {
-        const {clicks} = this.state
         return (
         <div>
           <button onClick={this.click}>
