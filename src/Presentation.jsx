@@ -2,7 +2,6 @@ import 'normalize.css'
 import 'spectacle/lib/themes/default/index.css'
 
 import React, { Component } from 'react'
-// import { Spectacle, Deck } from 'spectacle'
 import {
   Appear, 
   // BlockQuote, 
@@ -26,16 +25,13 @@ import {
 import BuggyCounterCode from './BuggyCounterCode'
 import BuggyCodeString from './BuggyCounterCodeString'
 import CounterCode from './CounterCode'
-// import createTheme from 'spectacle/lib/themes/default'
+import { ReactIntro, HowDiffers, ReactDiffers } from './slides/ReactSlides'
 
-import CodeSlide from 'spectacle-code-slide'
+// import CodeSlide from 'spectacle-code-slide'
 // import shiaLabeoufMagicGif from './shiaLabeoufMagic.gif'
 
 // use preloader for images
 // import preloader from 'spectacle/lib/utils/preloader'
-
-
-// const code = function() { console.log('error')}
 
 // const theme = createTheme({
 //     primary: 'Montserrat',
@@ -45,8 +41,8 @@ export function ul(items, delimiter='-') {
     const li = items
       .split(delimiter)
       .filter( v=> v.length)
-      .map( item => (
-        <Appear><ListItem>{item}</ListItem></Appear>
+      .map( (item,i) => (
+        <Appear><ListItem key={item+i}>{item}</ListItem></Appear>
       ))
     return <List>{li}</List>
 }
@@ -75,12 +71,22 @@ export default class Presentation extends Component {
                    -React Tools
                    -Redux Tools` )}              
             </Slide>
-            
+            <ReactIntro />
+            <HowDiffers />
+            <ReactDiffers />
             <Slide>
-              <Heading size={3}>Chrome Satements</Heading>
-              <CodePane lang="jsx" source='console.assert(false, "this statement is false")' />
-              <Text>This will only log to the console if the statement is false.</Text>
+              <Heading size={3}>React State and Props</Heading>
+              <Text>React handles this by using components which have state and props</Text>
+              <Text>State is the data available to the current component, and can be manipulaetd within</Text>
+              <Text>Props are data fed into the component from somewhere else.</Text>
+            </Slide>
+            <Slide>
+              <Heading size={3}>Lesser Used Console Satements</Heading>
+              <CodePane lang="js" source='console.assert(false, "this statement is false")' />
+              <Text>This can be useful when you want to only show an error on a certain condition</Text>
               {p('It can be slower so you will want to limit it use with the environment')}              
+              <button id="button" onClick={() => console.assert(true, 'nothing is rendered')}>Assert True</button>
+              <button id="button" onClick={() => console.assert(false, 'there\'s a problem in our code')}>Assert False</button>
             </Slide>
             
             <Slide>
@@ -99,24 +105,5 @@ export default class Presentation extends Component {
             </Slide>
           </Deck>
         )
-    //     return (
-    //   <Spectacle>
-    //     <Deck transition={[]} transitionDuration={0} progress="bar">
-    //       <CodeSlide
-    //         transition={[]}
-    //         lang="js"
-    //         code={code}
-    //         ranges={[
-    //           { loc: [0, 270], title: 'Walking through some code' },
-    //           { loc: [0, 1], title: 'The Beginning' },
-    //           { loc: [1, 2] },
-    //           { loc: [1, 2], note: 'Heres a note!' },
-    //           { loc: [2, 3] },
-    //           { loc: [4, 7] },
-    //           { loc: [8, 10] },
-    //         ]}/>
-    //     </Deck>
-    //   </Spectacle>
-    // )
     }
 }

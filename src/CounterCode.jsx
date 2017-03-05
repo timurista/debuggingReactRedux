@@ -23,7 +23,7 @@ export default class CounterCode extends Component {
     renderCookies() {
         const { cookies } = this.state
         const cookieArray = Array(cookies).fill(0).map( (value, i) => (
-          <li key={i}><img src={cookie} height="20" width="20"/>Cookie # {i}</li>        
+          <li key={i}><img src={cookie} height="20" width="20" alt="cookies"/>Cookie # {i}</li>        
         ))
         return <ul>{cookieArray}</ul>
     }
