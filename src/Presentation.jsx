@@ -4,7 +4,7 @@ import 'spectacle/lib/themes/default/index.css'
 import React, { Component } from 'react'
 // import { Spectacle, Deck } from 'spectacle'
 import {
-  // Appear, 
+  Appear, 
   // BlockQuote, 
   // Cite, 
   CodePane, 
@@ -15,27 +15,41 @@ import {
   Heading, 
   // Image, 
   // Layout, 
-  // ListItem, 
-  // List, 
-  // Quote, 
+  ListItem, 
+  List, 
+  Quote, 
   Slide, 
-  Text
+  Text,
+  ComponentPlayground
 } from 'spectacle'
 
-import createTheme from 'spectacle/lib/themes/default'
+import BuggyCounterCode from './BuggyCounterCode'
+import BuggyCodeString from './BuggyCounterCodeString'
+import CounterCode from './CounterCode'
+// import createTheme from 'spectacle/lib/themes/default'
 
-// import CodeSlide from 'spectacle-code-slide'
+import CodeSlide from 'spectacle-code-slide'
 // import shiaLabeoufMagicGif from './shiaLabeoufMagic.gif'
 
 // use preloader for images
 // import preloader from 'spectacle/lib/utils/preloader'
 
 
-const code = function() { console.log('error')}
+// const code = function() { console.log('error')}
 
 // const theme = createTheme({
 //     primary: 'Montserrat',
 // })
+
+export function ul(items, delimiter='-') {
+    const li = items
+      .split(delimiter)
+      .filter( v=> v.length)
+      .map( item => (
+        <Appear><ListItem>{item}</ListItem></Appear>
+      ))
+    return <List>{li}</List>
+}
 
 export default class Presentation extends Component {
     render() {
@@ -50,12 +64,29 @@ export default class Presentation extends Component {
               <Text>Speedy Debugging, or how to improve your workflow with chrome tools</Text>
             </Slide>
             <Slide>
-              <Heading size={8}>Code Example</Heading>
-              <CodePane 
-                lang="jsx" 
-                source={code.toString()} 
-                margin={'20px auto'}
-              />
+              <Heading size={3}>How To Imrpove Debugging</Heading>
+              {ul(`-Console Statements
+                   -Sources Pane
+                   -React Tools
+                   -Redux Tools` )}
+              
+            </Slide>
+            <Slide>
+              <Heading size={2}>Buggy Cookie</Heading>
+              <BuggyCounterCode />
+            </Slide>
+            <Slide>
+            <CodePane
+              lang="jsx"
+              source={BuggyCodeString}
+            />
+            </Slide>
+            <Slide>            
+              <ComponentPlayground code={BuggyCodeString} theme="dark" />
+            </Slide>
+            <Slide>
+              <Heading size={2}>Correct Cookie Code</Heading>
+              <CounterCode />
             </Slide>
           </Deck>
         )
