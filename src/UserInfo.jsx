@@ -1,8 +1,9 @@
 import React, { Component } from 'react'
 import axios from 'axios'
-import { reduxForm, Field } from 'redux-form'
+import { reduxForm, Field, initalize } from 'redux-form'
 import { connect } from 'react-redux'
 import {load as loadInfo } from './load'
+import _ from 'lodash'
 
 /* eslint-disable no-console */
 class UserInfo extends Component {
@@ -14,14 +15,17 @@ class UserInfo extends Component {
         this.loadUser = this.loadUser.bind(this)
     }
     
+        
     loadUser() {
-        const { load } = this.props
+        const { initialize } = this.props
+        // const { load } = this.props
+        // const loadme = loadInfo
         // const self = this
         axios.get('https://randomuser.me/api/')
         .then(function (response) {
             console.info(response)
             const user = response.data.results[0]
-            load({user: user})
+            initialize({user: user})
         })
         .catch(function (error) {
             console.error(error)
@@ -30,65 +34,46 @@ class UserInfo extends Component {
     
     
     renderUserForm() {
-        const { user, handleSubmit } = this.props
-        if (!user) return null
-        
-        const { name, username } = user
+        const { user } = this.props
+        // if (!user) return null
+        console.assert(user, 'no user? ', this.props)
+        const username = user.username
+        const name = user.name 
         const style = {marginLeft: '20px'}
         return (
-          <form onSubmit={handleSubmit}>
-            <label>UserName</label>
+          <div>
             <div>
-            <Field name="username" component="input" type="text" placeholder="First Name"/>
-          </div>
+              <h4>Random User Getter</h4>
+              <button type="button" onClick={this.loadUser}>
+                Get Random User Info
+              </button>
+            </div>
             <div>
         <label>First Name</label>
         <div>
-          <Field name="name.first" component="input" type="text" placeholder="First Name"/>
+          <Field name="firstName" component="input" type="text" placeholder="First Name"/>
         </div>
       </div>
       <div>
         <label>Last Name</label>
         <div>
-          <Field name="name.last" component="input" type="text" placeholder="Last Name"/>
+          <Field name="lastName" component="input" type="text" placeholder="Last Name"/>
         </div>
       </div>
       <div>
-        <label>Last Name</label>
+        <label>Username</label>
         <div>
           <Field name="username" component="input" type="text" placeholder="Last Name"/>
         </div>
       </div>
-          </form>
+    </div>
         )
-        // const usersInfo = users.map( (user, i) => (
-        //   <li 
-        //     key={i} 
-        //     style={
-        //     {
-        //         display: 'flex', 
-        //         justifyContent: 'space-between',
-        //         marginBottom: '20px'
-        //     }}
-        //   >
-        //     <img src={user.picture.thumbnail} alt={user.username} />
-        //     <span style={style}>{`${user.name.last}, ${user.name.first}`}</span>
-        //     <span style={style}>{user.username}</span>
-        //     <span style={style}>{user.email}</span>
-        //   </li>        
-        // ))
-        // return <ul>{usersInfo}</ul>
     }
-    
     render() {
         return (
-        <div>
-          <h4>Random User Getter</h4>
-          <button onClick={this.loadUser}>
-            Get Random User Info
-          </button>
-          {this.renderUserForm()}
-        </div>
+          <form onSubmit={this.props.handleSubmit( values => alert('submitted: '+JSON.stringify(values)))}>
+            {this.renderUserForm()}
+          </form>
       )
     }
 }
@@ -97,7 +82,7 @@ let connectedUserInfo = reduxForm({ form: 'userInfo' })(UserInfo)
 
 connectedUserInfo = connect(
   state => ({
-      initialValues: state.user // pull initial values from account reducer
+      user: state.user || {} // pull initial values from account reducer
   }),
   { load: loadInfo }               // bind account loading action creator
 )(connectedUserInfo)
