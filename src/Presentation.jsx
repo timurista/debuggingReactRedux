@@ -240,7 +240,7 @@ export default class Presentation extends Component {
             
             <Slide>
               <Heading size={3}>Redux Tools on a Simple Form</Heading>
-              <Text>The form below will load user information using redux and redux-form</Text>
+              <Text>The form below will load user information using redux and redux-form. It's failing though, why?</Text>
               <UserInfo />
             </Slide>
             
