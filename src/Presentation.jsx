@@ -4,8 +4,6 @@ import 'spectacle/lib/themes/default/index.css'
 import React, { Component } from 'react'
 import {
   Appear, 
-  // BlockQuote, 
-  // Cite, 
   CodePane, 
   // Code, 
   Deck, 
@@ -19,7 +17,6 @@ import {
   // Quote, 
   Slide, 
   Text,
-  // ComponentPlayground
 } from 'spectacle'
 
 import BuggyCounterCode from './BuggyCounterCode'
@@ -31,12 +28,6 @@ import GetRandomUser from './GetRandomUser'
 import UserInfo from './UserInfo'
 
 import { ReactIntro, HowDiffers, ReactDiffers } from './slides/ReactSlides'
-
-// import CodeSlide from 'spectacle-code-slide'
-// import shiaLabeoufMagicGif from './shiaLabeoufMagic.gif'
-
-// use preloader for images
-// import preloader from 'spectacle/lib/utils/preloader'
 
 // const theme = createTheme({
 //     primary: 'Montserrat',
@@ -253,6 +244,15 @@ export default class Presentation extends Component {
               <UserInfo />
             </Slide>
             
+            <Slide>
+              <Heading size={3}>Recap Quiz</Heading>
+              <Text>Quiz Game goes here</Text>
+            </Slide>
+            
+            <Slide>
+              <Heading size={3}>Questions?</Heading>
+              <Text>Let's look at the store by going to the Redux Pane. now it's empty</Text>
+            </Slide>
             
           </Deck>
         )
