@@ -12,6 +12,9 @@
     "markdown-to-react-components": "^0.2.4",
     "react": "^15.4.2",
     "react-dom": "^15.4.2",
+    "react-redux": "^5.0.3",
+    "redux": "^3.6.0",
+    "redux-form": "^6.5.0",
     "spectacle": "^2.0.0",
     "spectacle-code-slide": "^0.3.1"
   },

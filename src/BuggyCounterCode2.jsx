@@ -27,12 +27,16 @@ export default class BuggyCounterCode2 extends Component {
     renderCookies() {
         const { cookies } = this.state
         // put a breakpoint here, then when stopped click "step into"
+        // we will watch a little bit of react is doing to convert our object
         const cookieArray = Array(cookies).fill(0).map( i => (
         <li key="i">
           <img src={cookie} height="20" width="20" alt="cookie"/>
           Cookie # {i}
         </li>        
       ))
+      // put a break here and add a watch with the variable name "cookieArray"
+      // it looks like we are getting more cookie so what gives?
+      // look at the property key in the objects for each array item, notice anything?
         return <ul>{cookieArray}</ul>
     }
     

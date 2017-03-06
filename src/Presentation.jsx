@@ -28,6 +28,7 @@ import BuggyCodeString from './BuggyCounterCodeString'
 import CounterCode from './CounterCode'
 import JSProfileExample from './JSProfileExample'
 import GetRandomUser from './GetRandomUser'
+import UserInfo from './UserInfo'
 
 import { ReactIntro, HowDiffers, ReactDiffers } from './slides/ReactSlides'
 
@@ -179,6 +180,7 @@ export default class Presentation extends Component {
               <Text>Unlike java or traditional OOP, functions are objects and inherit the global context when instantiated</Text>
               <Text>When you click on "addCookie" that function is a living object in the window space, and it's reference is the global window object. This is a "feature" of Jsx code.</Text>
             </Slide>
+            
             <Slide>
               <Text>One way to fis our problem is to bind the context of this to the class it is called in, within the constructor.</Text>
               <Text>Binding is a feature of javascript that allows you to assign context and even values, freezing a function ie enforcing encapsulation</Text>
@@ -199,11 +201,59 @@ export default class Presentation extends Component {
               <Text>Press Command P and type "BuggyCounterCode2." Did we fix it?</Text>              
               <BuggyCounterCode2 />
             </Slide>
+            
+            <Slide>
+              <Heading size={3}>Items and keys in React</Heading>
+              <Text>React uses a key value to distinguish rendering its list items</Text>              
+              <Text>It needs that key in referencing it from the virtual DOM. To help it, we need to set the key explicitly to something different each time (index number)</Text>
+              <Text>Our code uses the string of i, but it was a typo - it should be in brackets </Text>
+            </Slide>
 
             <Slide>
-              <Heading size={2}>Correct Cookie Code</Heading>
+              <Heading size={3}>Correct Cookie Code</Heading>
               <CounterCode />
             </Slide>
+            
+            <Slide>
+              <Heading size={3}>React Tools</Heading>
+              <Text>If you haven't already, add React and Redux Developer Tools to Chrome Extensions</Text>              
+              <a href="https://chrome.google.com/webstore/detail/react-developer-tools/fmkadmapgofadopljbjfkapdkoienihi?hl=en">
+              Found here</a>
+              <Text>React tools can help us manipulate and test our code in real time</Text>
+            </Slide>
+            
+            <Slide>
+              <Heading size={3}>Correct Cookie Code</Heading>
+              <Text>Click on the cookie code button then open React pane in Chrome dev.</Text>
+                <Text>This will open onto the object</Text>
+              <Text>You can change things like props and state from this tab, then watch and see how it behaves...</Text>
+              <CounterCode />
+            </Slide>
+            
+            <Slide>
+              <Heading size={3}>Redux Store</Heading>
+              <Text>React is one-way dataflow, so if you want to modify a component's internal state you need to send it props.</Text>
+              <Text>But this get's tricky if you want to modify the state of another component that is not a direct parent.</Text>
+              <Text>Enter Redux Store: a database to connect any component to the flow of virtual dom updates.</Text>
+            </Slide>
+            
+            <Slide>
+              <Heading size={3}>Redux Store</Heading>
+              <img src="https://image.slidesharecdn.com/reactreduxintroduction-151124165017-lva1-app6891/95/react-redux-introduction-33-638.jpg?cb=1448383914" alt="redux store" />
+            </Slide>
+            
+            <Slide>
+              <Heading size={3}>Redux Tools</Heading>
+              <Text>Let's look at the store by going to the Redux Pane. now it's empty</Text>
+            </Slide>
+            
+            <Slide>
+              <Heading size={3}>Redux Tools on a Simple Form</Heading>
+              <Text>The form below will load user information using redux and redux-form</Text>
+              <UserInfo />
+            </Slide>
+            
+            
           </Deck>
         )
     }
