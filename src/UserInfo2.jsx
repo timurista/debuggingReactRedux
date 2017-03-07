@@ -9,6 +9,9 @@ import _ from 'lodash'
 class UserInfo extends Component {
     constructor(props) {
         super(props)
+        // this.state = {
+        //     users: []
+        // }
         this.loadUser = this.loadUser.bind(this)
     }
     
@@ -16,7 +19,7 @@ class UserInfo extends Component {
     loadUser() {
         const { initialize } = this.props
         // const { load } = this.props
-        const loadme = loadInfo
+        // const loadme = loadInfo
         // const self = this
         axios.get('https://randomuser.me/api/')
         .then(function (response) {
@@ -30,7 +33,8 @@ class UserInfo extends Component {
     }
     
     renderInput({ input, meta }) {
-        console.log('USERINFO render input',input, meta)
+        console.log(input, meta)
+        // what's up here?
         return (
         <input id={input.name}
           type="text" 
@@ -40,15 +44,14 @@ class UserInfo extends Component {
     }
     
     render() {
-        const { user, initial } = this.props
+        const { user } = this.props
       // if (!user) return null
         console.assert(user, 'no user? ', this.props)
       // const username = user.username
       // const name = user.name 
         const style = {marginLeft: '20px'}        
-        const onSubmit = () => this.props.handleSubmit( values => alert('submitted: '+JSON.stringify(values)))
         return (
-          <form onSubmit={null}>
+          <form onSubmit={this.props.handleSubmit( values => alert('submitted: '+JSON.stringify(values)))}>
               <div>
                 <h4>Random User Getter</h4>
                 <button type="button" onClick={this.loadUser}>
@@ -80,11 +83,11 @@ class UserInfo extends Component {
 
 let connectedUserInfo = reduxForm({ form: 'userInfo' })(UserInfo)
 
-// connectedUserInfo = 
+// connectedUserInfo = connect(
+//   state => ({
+//       user: state.user || {} // pull initial values from account reducer
+//   }),
+//   { load: loadInfo }               // bind account loading action creator
+// )(connectedUserInfo)
 
-export default connect(
-  state => ({
-      user: state.values || {} // pull initial values from account reducer
-  })
-  // { load: loadInfo }               // bind account loading action creator
-)(connectedUserInfo)
+export default connectedUserInfo

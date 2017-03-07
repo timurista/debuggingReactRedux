@@ -26,8 +26,18 @@ import CounterCode from './CounterCode'
 import JSProfileExample from './JSProfileExample'
 import GetRandomUser from './GetRandomUser'
 import UserInfo from './UserInfo'
+import BuggyForm from './BuggyForm'
 
 import { ReactIntro, HowDiffers, ReactDiffers } from './slides/ReactSlides'
+
+import { Provider } from 'react-redux'
+import { createStore } from 'redux'
+import { reducer } from 'redux-form'
+
+const store = createStore(
+  reducer,
+  window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()
+)
 
 // const theme = createTheme({
 //     primary: 'Montserrat',
@@ -241,9 +251,19 @@ export default class Presentation extends Component {
             <Slide>
               <Heading size={3}>Redux Tools on a Simple Form</Heading>
               <Text>The form below will load user information using redux and redux-form. It's failing though, why?</Text>
-              <UserInfo />
+              <Provider store={store}>
+                <UserInfo />
+              </Provider>
             </Slide>
             
+            <Slide>
+              <Heading size={3}>Another Buggy Form</Heading>
+              <Text>The form below will load user information using redux and redux-form. It's failing though, why?</Text>
+              <Provider store={store}>
+                <BuggyForm />
+              </Provider>
+            </Slide>
+
             <Slide>
               <Heading size={3}>Recap Quiz</Heading>
               <Text>Quiz Game goes here</Text>

@@ -8,7 +8,6 @@ class App extends Component {
     render() {
       // TODO: add redux tools register here
         return (
-        
         <div>
           {/* <style>
           {`.language-jsx,
