@@ -81,7 +81,6 @@ class UserInfo extends Component {
 let connectedUserInfo = reduxForm({ form: 'userInfo' })(UserInfo)
 
 // connectedUserInfo = 
-
 export default connect(
   state => ({
       user: state.values || {} // pull initial values from account reducer
