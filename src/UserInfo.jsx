@@ -80,10 +80,15 @@ class UserInfo extends Component {
 
 let connectedUserInfo = reduxForm({ form: 'userInfo' })(UserInfo)
 
+function mapStateToProps(state) {
+    if (!state.userInfo) { return {} }
+    return {
+        user: state.userInfo.values.user || {} // pull initial values from account reducer
+    }
+}
+
 // connectedUserInfo = 
 export default connect(
-  state => ({
-      user: state.values || {} // pull initial values from account reducer
-  })
+  mapStateToProps
   // { load: loadInfo }               // bind account loading action creator
 )(connectedUserInfo)

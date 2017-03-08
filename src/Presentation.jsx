@@ -21,7 +21,6 @@ import {
 
 import BuggyCounterCode from './BuggyCounterCode'
 import BuggyCounterCode2 from './BuggyCounterCode2'
-import BuggyCodeString from './BuggyCounterCodeString'
 import CounterCode from './CounterCode'
 import JSProfileExample from './JSProfileExample'
 import GetRandomUser from './GetRandomUser'
