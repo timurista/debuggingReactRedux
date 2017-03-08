@@ -29,13 +29,11 @@ class UserInfo extends Component {
         })        
     }
     
-    renderInput({ input, meta, placeholder, values }) {
-        console.log('USERINFO render input', values)
-        // let value = "";
-        // if (value)
-        const value = _.pick(values, [`user.${input.name}`, `${input.name}`, ''])
+    renderInput({ input, meta, placeholder, user }) {
+        console.log('USERINFO render input', user)
+        const value = _.get(user, `${input.name}`, '')
         console.log(input.name, value)
-        
+        // but now we can't seem to change our value?
         return (
           <input 
             id={input.name}
@@ -48,9 +46,9 @@ class UserInfo extends Component {
     }
     
     render() {
-        const { values } = this.props
+        const { user, initial } = this.props
       // if (!user) return null
-        console.assert(values, 'no values? ', this.props)
+        console.assert(user, 'no user? ', this.props)
       // const username = user.username
       // const name = user.name 
         const style = {marginLeft: '20px'}        
@@ -66,19 +64,19 @@ class UserInfo extends Component {
               <div>
           <label>First Name</label>
           <div>
-            <Field name="name.first" component={this.renderInput} values={values} type="text" placeholder="First Name" />
+            <Field name="name.first" component={this.renderInput} user={user} type="text" placeholder="First Name" />
           </div>
         </div>
         <div>
           <label>Last Name</label>
           <div>
-            <Field name="name.last" component={this.renderInput} values={values} type="text" placeholder="Last Name"/>
+            <Field name="name.last" component={this.renderInput} user={user} type="text" placeholder="Last Name"/>
           </div>
         </div>
         <div>
           <label>Username</label>
           <div>
-            <Field name="login.username" component={this.renderInput} values={values} type="text" placeholder="Username"/>
+            <Field name="login.username" component={this.renderInput} user={user} type="text" placeholder="Username"/>
           </div>
         </div>
           </form>
@@ -92,9 +90,9 @@ let connectedUserInfo = reduxForm({
 })(UserInfo)
 
 function mapStateToProps(state) {
-    if (!state.userInfo) { return {...state.values} }
+    if (!state.userInfo) { return {} }
     return {
-        ...state.userInfo.values || {} // pull initial values from account reducer
+        user: state.userInfo.values.user || {} // pull initial values from account reducer
     }
 }
 
