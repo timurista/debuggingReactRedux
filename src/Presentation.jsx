@@ -293,6 +293,11 @@ export default class Presentation extends Component {
             </Slide>
             
             <Slide>
+              <Heading size={3}>Health Trio Specific Statements</Heading>
+              <Text>ht.application and ht.global</Text>
+            </Slide>
+            
+            <Slide>
               <Heading size={3}>Summary</Heading>
               <Text>You can use chrome dev tools to do efficient console tests</Text>
               <Text>You can use chrome sources and debugger to watch a file and inspect route cause</Text>
