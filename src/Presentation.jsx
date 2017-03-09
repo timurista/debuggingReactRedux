@@ -125,12 +125,41 @@ export default class Presentation extends Component {
             </Slide>
             
             <Slide>
+              <Heading size={3}>Groups and Styling</Heading>
+              <CodePane lang="js" source={`
+        console.group('Group Begin');
+        console.log('%cThis will be formatted with border and blue text', 'color: blue; border: 1px solid black;');
+        console.log('%cThis will be formatted with border and red text', 'color: red; border: 2px solid black;');
+        console.groupEnd();
+        
+        console.groupCollapsed('Group Collapsed');              
+        console.log('%cThis will be formatted with green text', 'color: green; ');
+        console.log('%cThis will be formatted with blue border and bigger font', 'color: #86CC00; background-color: blue; font-size: 20px; padding: 3px;');
+        console.groupEnd();
+              `} />
+              <Text>Useful when styling and organizing output from the console.</Text> 
+              <button onClick={() => {
+                  console.group('Group Begin')
+                  console.log('%cThis will be formatted with border and blue text', 'color: blue; border: 1px solid black;')
+                  console.log('%cThis will be formatted with border and red text', 'color: red; border: 2px solid black;')
+                  console.groupEnd()
+                  
+                  console.groupCollapsed('Group Collapsed')              
+                  console.log('%cThis will be formatted with green text', 'color: green; ')
+                  console.log('%cThis will be formatted with blue border and bigger font', 'color: #86CC00; background-color: blue; font-size: 20px; padding: 3px;')
+                  console.groupEnd()
+              }
+            }>Test Group and Styles</button>
+            </Slide>
+            
+            
+            <Slide>
               <Heading size={3}>Trace</Heading>
               <CodePane lang="js" source={`
-                console.count(label);
+                console.trace('started tracing...');
               `} />
               <Text>You can use tracing to print out the different contexts from which this function was called</Text> 
-              <button onClick={() => console.trace('started tracing...')}>Count Me</button>
+              <button onClick={() => console.trace('started tracing...')}>Trace Me</button>
             </Slide>
             
             <Slide>
@@ -223,7 +252,7 @@ export default class Presentation extends Component {
             </Slide>
             
             <Slide>
-              <Heading size={3}>Correct Cookie Code</Heading>
+              <Heading size={3}>Cookie Code Through React Tools</Heading>
               <Text>Click on the cookie code button then open React pane in Chrome dev.</Text>
                 <Text>This will open onto the object</Text>
               <Text>You can change things like props and state from this tab, then watch and see how it behaves...</Text>
@@ -262,15 +291,13 @@ export default class Presentation extends Component {
                 <BuggyForm />
               </Provider>
             </Slide>
-
-            <Slide>
-              <Heading size={3}>Recap Quiz</Heading>
-              <Text>Quiz Game goes here</Text>
-            </Slide>
             
             <Slide>
-              <Heading size={3}>Questions?</Heading>
-              <Text>Let's look at the store by going to the Redux Pane. now it's empty</Text>
+              <Heading size={3}>Summary</Heading>
+              <Text>You can use chrome dev tools to do efficient console tests</Text>
+              <Text>You can use chrome sources and debugger to watch a file and inspect route cause</Text>
+              <Text>You can use other third party libraries to verify redux store properties and component properties</Text>
+              <Text>Questions?</Text>
             </Slide>
             
           </Deck>
