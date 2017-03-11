@@ -40,7 +40,6 @@ class UserInfo extends Component {
           <input 
             id={input.name}
             type="text" 
-            value={value}
             onChange={input.onChange} 
             placeholder={placeholder} 
           />
@@ -50,7 +49,7 @@ class UserInfo extends Component {
     render() {
         const { values } = this.props
       // if (!user) return null
-        console.assert(values, 'no values? ', this.props)
+        // console.assert(values, 'no values? ', this.props)
       // const username = user.username
       // const name = user.name 
         const style = {marginLeft: '20px'}        
@@ -98,8 +97,13 @@ function mapStateToProps(state) {
     }
 }
 
-// connectedUserInfo = 
-export default connect(
+const connectedInfoTest = connect(
   mapStateToProps
   // { load: loadInfo }               // bind account loading action creator
 )(connectedUserInfo)
+
+console.group('connected user info')
+console.log('CONNECTED USER INFO>', connectedInfoTest)
+console.groupEnd()
+// connectedUserInfo = 
+export default connectedInfoTest

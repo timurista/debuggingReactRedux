@@ -5,12 +5,20 @@ Created for a talk given at HealthTrio LLC on using chrome developer and other t
 ## Table of Contents
 
 - [Setup](#setup)
+- [Presentation](#presentation)
 
 ## Setup
 
 - `$ yarn`
 - `$ yarn start`
 - prod: `$ yarn build`
+
+## Presentation
+
+This presentation covers four areas of chrome developer tools that you may not be familiar with. This includes console statements, sources pane, and utilizing network tab. It also covers the use of react developer extension and redux tools extension for the chrome browser. 
+- [React Tools](https://chrome.google.com/webstore/detail/react-developer-tools/fmkadmapgofadopljbjfkapdkoienihi?hl=en) 
+- [Redux Tools](https://chrome.google.com/webstore/detail/redux-devtools/lmhkpmbekcpmknklioeibfkpmmfibljd?hl=en)
+- [Chrome Developer Tools](https://developer.chrome.com/devtools)
 
 This project was bootstrapped with [Create React App](https://github.com/facebookincubator/create-react-app).
  Visit if you would like to learn more.
